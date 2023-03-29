@@ -11,8 +11,6 @@ public interface IClientes {
 	// me devuelve una nueva arrayList con los mismo elementos
 	List<Cliente> get();
 
-	//devuelve la cantidad de elementos que contiene la lista
-	int getCantidad();
 
 	void insertar(Cliente cliente) throws OperationNotSupportedException;
 

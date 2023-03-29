@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria;
+package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -49,11 +49,6 @@ public class Alquileres implements IAlquileres{
 		return alquileresVehiculo;
 	}
 	
-	
-	@Override
-	public int getCantidad() {
-		return coleccionAlquileres.size();
-	}
 	
 	private void comprobarAlquiler(Cliente cliente, Vehiculo vehiculo, LocalDate fechaAlquiler) throws OperationNotSupportedException {
 		    // Compruebo que existe algún alquiler sin devolver para el cliente o el vehiculo

@@ -13,15 +13,19 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IAlquilere
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IClientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IFuenteDatos;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IVehiculos;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Alquileres;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Clientes;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria.Vehiculos;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Alquileres;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Clientes;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Vehiculos;
 
 public abstract class Modelo {
 	private IClientes clientes;
 	private IVehiculos vehiculos;
 	private IAlquileres alquileres;
 	private IFuenteDatos fuenteDatos;
+	
+	public Modelo(IFuenteDatos fuenteDatos) {
+		setFuenteDatos(fuenteDatos);
+	}
 	
 	protected IClientes getClientes() {
 		return clientes;

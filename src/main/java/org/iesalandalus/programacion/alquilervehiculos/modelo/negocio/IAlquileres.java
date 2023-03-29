@@ -17,7 +17,6 @@ public interface IAlquileres {
 
 	List<Alquiler> get(Vehiculo vehiculo);
 
-	int getCantidad();
 
 	void insertar(Alquiler alquiler) throws OperationNotSupportedException;
 

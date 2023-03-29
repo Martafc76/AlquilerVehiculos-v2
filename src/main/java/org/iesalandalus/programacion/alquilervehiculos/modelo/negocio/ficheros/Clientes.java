@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria;
+package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,6 @@ public class Clientes implements IClientes {
 		return new ArrayList<>(coleccionClientes);
 	}
 	
-	//devuelve la cantidad de elementos que contiene la lista
-	@Override
-	public int getCantidad() {
-		return coleccionClientes.size();
-	}
 	
 	@Override
 	public void insertar(Cliente cliente) throws OperationNotSupportedException {
