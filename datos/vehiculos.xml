@@ -4,4 +4,5 @@
     <vehiculo cilindrada="1100" marca="Seat" matricula="1111BBB" modelo="León" tipo="turismo"/>
     <vehiculo cilindrada="1300" marca="Renault" matricula="2222CCC" modelo="Megane" tipo="turismo"/>
     <vehiculo marca="Mercedes-Benz" matricula="3333DDD" modelo="eSprinter" plazas="2" pma="7000" tipo="furgoneta"/>
+    <vehiculo cilindrada="90" marca="Renault" matricula="9323DFG" modelo="Scenic" tipo="turismo"/>
 </vehiculos>

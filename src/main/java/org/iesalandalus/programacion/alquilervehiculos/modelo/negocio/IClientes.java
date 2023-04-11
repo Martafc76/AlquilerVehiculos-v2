@@ -11,6 +11,9 @@ public interface IClientes {
 	// me devuelve una nueva arrayList con los mismo elementos
 	List<Cliente> get();
 
+	void comenzar();
+	
+	void terminar();
 
 	void insertar(Cliente cliente) throws OperationNotSupportedException;
 

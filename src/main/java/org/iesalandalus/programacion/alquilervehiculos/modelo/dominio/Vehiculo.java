@@ -11,7 +11,7 @@ public abstract class Vehiculo {
 	private String marca;
 	private String modelo;
 	private String matricula;
-	
+
 	protected Vehiculo(String marca, String modelo, String matricula) {
 		setMarca(marca);
 		setModelo(modelo);
@@ -19,55 +19,55 @@ public abstract class Vehiculo {
 	}
 
 	public static Vehiculo getVehiculoConMatricula(String matricula) {
-		if(matricula == null) {
+		if (matricula == null) {
 			throw new NullPointerException("ERROR: La matrícula no puede ser nula.");
 		}
-		return new Turismo("Seat","4x4",1000,matricula);
+		return new Turismo("Seat", "4x4", 1000, matricula);
 	}
 
 	protected Vehiculo(Vehiculo vehiculo) {
-		if(vehiculo == null) {
+		if (vehiculo == null) {
 			throw new NullPointerException("ERROR: No es posible copiar un vehículo nulo.");
 		}
 		marca = vehiculo.getMarca();
 		modelo = vehiculo.getModelo();
 		matricula = vehiculo.getMatricula();
-		
-		}
-	
+
+	}
+
 	public abstract int getFactorPrecio();
-	
+
 	public static Vehiculo copiar(Vehiculo vehiculo) {
 		Vehiculo vehiculoCopia = null;
-		if(vehiculo instanceof Turismo turismo) {
+		if (vehiculo instanceof Turismo turismo) {
 			vehiculoCopia = new Turismo(turismo);
 		}
-		
-		if(vehiculo instanceof Furgoneta furgoneta) {
+
+		if (vehiculo instanceof Furgoneta furgoneta) {
 			vehiculoCopia = new Furgoneta(furgoneta);
 		}
-		
-		if(vehiculo instanceof Autobus autobus ) {
+
+		if (vehiculo instanceof Autobus autobus) {
 			vehiculoCopia = new Autobus(autobus);
 		}
-	
+
 		return vehiculoCopia;
 	}
-	
+
 	public String getMarca() {
 		return marca;
 	}
 
 	protected void setMarca(String marca) {
-		
-		if(marca == null) {
+
+		if (marca == null) {
 			throw new NullPointerException("ERROR: La marca no puede ser nula.");
 		}
-		if(!marca.matches(ER_MARCA)) {
+		if (!marca.matches(ER_MARCA)) {
 			throw new IllegalArgumentException("ERROR: La marca no tiene un formato válido.");
 		}
 		this.marca = marca;
-		
+
 	}
 
 	public String getModelo() {
@@ -75,7 +75,7 @@ public abstract class Vehiculo {
 	}
 
 	protected void setModelo(String modelo) {
-		if(modelo == null) {
+		if (modelo == null) {
 			throw new NullPointerException("ERROR: El modelo no puede ser nulo.");
 		}
 		if (modelo.isBlank()) {
@@ -89,15 +89,14 @@ public abstract class Vehiculo {
 	}
 
 	protected void setMatricula(String matricula) {
-		if(matricula == null) {
+		if (matricula == null) {
 			throw new NullPointerException("ERROR: La matrícula no puede ser nula.");
 		}
-		if(!matricula.matches(ER_MATRICULA)) {
+		if (!matricula.matches(ER_MATRICULA)) {
 			throw new IllegalArgumentException("ERROR: La matrícula no tiene un formato válido.");
 		}
 		this.matricula = matricula;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -111,7 +110,7 @@ public abstract class Vehiculo {
 		if (!(obj instanceof Vehiculo))
 			return false;
 		Vehiculo other = (Vehiculo) obj;
-		return  Objects.equals(matricula, other.matricula);
+		return Objects.equals(matricula, other.matricula);
 	}
 
 }

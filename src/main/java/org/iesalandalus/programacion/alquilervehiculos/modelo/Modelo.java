@@ -7,50 +7,52 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IAlquileres;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IClientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IFuenteDatos;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IVehiculos;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Alquileres;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Clientes;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.ficheros.Vehiculos;
 
 public abstract class Modelo {
 	private IClientes clientes;
 	private IVehiculos vehiculos;
 	private IAlquileres alquileres;
 	private IFuenteDatos fuenteDatos;
-	
-	public Modelo(IFuenteDatos fuenteDatos) {
-		setFuenteDatos(fuenteDatos);
+
+	protected Modelo(FactoriaFuenteDatos factoriaFuenteDatos) {
+		setFuenteDatos(factoriaFuenteDatos.crear());
+		clientes = fuenteDatos.crearClientes();
+		alquileres = fuenteDatos.crearAlquileres();
+		vehiculos = fuenteDatos.crearVehiculos();
 	}
-	
+
 	protected IClientes getClientes() {
 		return clientes;
 	}
-	
+
 	protected IVehiculos getVehiculos() {
 		return vehiculos;
 	}
-	
+
 	protected IAlquileres getAlquileres() {
 		return alquileres;
 	}
-	
+
 	protected void setFuenteDatos(IFuenteDatos fuenteDatos) {
 		this.fuenteDatos = fuenteDatos;
 	}
-	
+
 	public void comenzar() {
-	    clientes = fuenteDatos.crearClientes();
-	    vehiculos = fuenteDatos.crearVehiculos();
-	    alquileres = fuenteDatos.crearAlquileres();
+		clientes.comenzar();
+		vehiculos.comenzar();
+		alquileres.comenzar();
 	}
 
 	public void terminar() {
-	    System.out.println("El modelo ha terminado");
+		clientes.terminar();
+		vehiculos.terminar();
+		alquileres.terminar();
+		System.out.println("El modelo ha terminado");
 	}
 
 	public abstract List<Alquiler> getListaAlquileres(Vehiculo turismo);
@@ -70,10 +72,11 @@ public abstract class Modelo {
 	public abstract void borrar(Cliente cliente) throws OperationNotSupportedException;
 
 	public abstract void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
-	
+
 	public abstract void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
-	public abstract void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException;
+	public abstract void modificar(Cliente cliente, String nombre, String telefono)
+			throws OperationNotSupportedException;
 
 	public abstract Alquiler buscar(Alquiler alquiler);
 

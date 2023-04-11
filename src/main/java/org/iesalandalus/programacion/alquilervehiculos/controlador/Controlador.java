@@ -12,8 +12,8 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.alquilervehiculos.vista.Vista;
 
 public class Controlador {
-	Modelo modelo;
-	Vista vista;
+	private Modelo modelo;
+	private Vista vista;
 	
 	public Controlador(Modelo modelo, Vista vista) {
 		if(modelo == null) {
@@ -25,7 +25,7 @@ public class Controlador {
 		}
 		this.modelo = modelo;
 		this.vista = vista;
-		vista.setControlador(this);
+		this.vista.setControlador(this);
 	}
 	
 	
@@ -35,7 +35,6 @@ public class Controlador {
 	}
 
 	public void terminar() {
-		vista.terminar();
 	    modelo.terminar();
 	}
 	

@@ -31,6 +31,7 @@ public class VistaTexto extends Vista {
 	}
 
 	public void terminar() {
+		getControlador().terminar();
 		System.out.println("Que tengas un buen día!");
 	}
 
@@ -196,7 +197,8 @@ public class VistaTexto extends Vista {
 	public void listarVehiculos() {
 		Consola.mostrarCabecera("Lista de vehiculos");
 		List<Vehiculo> listaVehiculos = getControlador().getListaVehiculos();
-		listaVehiculos.sort(Comparator.comparing(Vehiculo::getMarca).thenComparing(Vehiculo::getModelo).thenComparing(Vehiculo::getMatricula));
+		listaVehiculos.sort(Comparator.comparing(Vehiculo::getMarca).thenComparing(Vehiculo::getModelo)
+				.thenComparing(Vehiculo::getMatricula));
 		for (Vehiculo vehiculo : listaVehiculos) {
 			System.out.println(vehiculo);
 		}
@@ -206,7 +208,8 @@ public class VistaTexto extends Vista {
 		Consola.mostrarCabecera("Lista de alquileres");
 		Comparator<Cliente> comparadorCliente = Comparator.comparing(Cliente::getNombre).thenComparing(Cliente::getDni);
 		List<Alquiler> listaAlquileres = getControlador().getListaAlquileres();
-		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getCliente,comparadorCliente));
+		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getCliente,
+				comparadorCliente));
 		for (Alquiler alquiler : listaAlquileres) {
 			System.out.println(alquiler);
 		}
@@ -218,7 +221,8 @@ public class VistaTexto extends Vista {
 		Consola.mostrarCabecera("Lista de alquileres del cliente");
 		Comparator<Cliente> comparadorCliente = Comparator.comparing(Cliente::getNombre).thenComparing(Cliente::getDni);
 		List<Alquiler> listaAlquileres = getControlador().getListaAlquileres(cliente);
-		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getCliente,comparadorCliente));
+		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getCliente,
+				comparadorCliente));
 		for (Alquiler alquiler : listaAlquileres) {
 			System.out.println(alquiler);
 		}
@@ -227,9 +231,11 @@ public class VistaTexto extends Vista {
 	public void listarAlquileresVehiculo() {
 		Vehiculo vehiculo = Consola.leerVehiculoMatricula();
 		Consola.mostrarCabecera("Lista de alquileres del turismo");
-		Comparator<Vehiculo> comparadorVehiculo = Comparator.comparing(Vehiculo::getMarca).thenComparing(Vehiculo::getModelo).thenComparing(Vehiculo::getMatricula);
+		Comparator<Vehiculo> comparadorVehiculo = Comparator.comparing(Vehiculo::getMarca)
+				.thenComparing(Vehiculo::getModelo).thenComparing(Vehiculo::getMatricula);
 		List<Alquiler> listaAlquileres = getControlador().getListaAlquileres(vehiculo);
-		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getVehiculo, comparadorVehiculo));
+		listaAlquileres.sort(Comparator.comparing(Alquiler::getFechaAlquiler).thenComparing(Alquiler::getVehiculo,
+				comparadorVehiculo));
 		try {
 			for (Alquiler alquileres : listaAlquileres) {
 				System.out.println(alquileres);
@@ -260,7 +266,7 @@ public class VistaTexto extends Vista {
 		if (estadisticas != null) {
 			System.out.println(estadisticas);
 		}
-			
+
 	}
 
 	private Map<TipoVehiculo, Integer> inicializarEstadisticas() {
